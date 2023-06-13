@@ -7,7 +7,7 @@ contract CrowdFunding {
         string description;
         uint256 funding_goal;
         uint256 deadline;
-        uint256 recievedAmount;
+           uint256 recievedAmount;
         address _owner;
         userbalance[]   balance;
     }
