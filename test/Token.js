@@ -11,7 +11,7 @@ describe("Token contract", () => {
     [owner, addr1, addr2, _] = await ethers.getSigners();
   });
 
-  describe("Bhanu", () => {
+  describe("Deployment", () => {
     it("Should set the right owner", async () => {
       expect(await Token.owner()).to.equal(owner.address);
     });
@@ -45,3 +45,4 @@ describe("Token contract", () => {
   //   })
   // });
 });
+
