@@ -1,4 +1,4 @@
- //================Token Contract ==================//
+//================Token Contract ==================//
 
 const { expect } = require("chai");
 
@@ -12,13 +12,23 @@ describe("Token contract", () => {
   });
 
   describe("Deployment", () => {
-    it("Should set the right owner", async () => {
+    it("should set the right owner", async () => {
       expect(await Token.owner()).to.equal(owner.address);
     });
-    it("Should assign the total supply of tokens to the owner", async () => {
+    it("should assign the total supply of tokens to the owner", async () => {
       const ownerBalance = await Token.balanceOf(owner.address);
       expect(await Token.total_Supply()).to.equal(ownerBalance);
     });
+    it('should transfer the right amount',async()=>{
+        await Token.connect(owner).transfer(addr1,1);
+        const afterbalance = await Token.balanceOf(owner);
+        expect(await balance).not.to.be.equal.to.await (afterbalance);
+    })
+
+    // it("Should assign the total supply of tokens to the owner", async () => {
+    //   const ownerBalance = await Token.balanceOf(owner.address);
+    //   expect(await Token.total_Supply()).to.equal(ownerBalance);
+    // });
   });
 
   // descibe("Transcations", () => {
@@ -41,8 +51,7 @@ describe("Token contract", () => {
   //   });
   //   it('Should update the balance after transfers', async()=>{
   //     const initialOwnerBalanace = await token.balanceOf(owner.address);
-      
+
   //   })
   // });
 });
-
