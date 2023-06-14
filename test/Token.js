@@ -31,6 +31,13 @@ describe("Token contract", () => {
       expect(await Token.balanceOf(addr2.address)).to.equal(500);
     });
 
+    it('should tell the right balance of the user',async()=>{
+      await Token.balanceOf()
+    })
+
+
+
+
     // it("Should assign the total supply of tokens to the owner", async () => {
     //   const ownerBalance = await Token.balanceOf(owner.address);
     //   expect(await Token.total_Supply()).to.equal(ownerBalance);
