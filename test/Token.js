@@ -34,7 +34,7 @@ describe("Token contract", () => {
     it('should tell the right balance of the user',async()=>{
       expect( await Token.balanceOf(addr1.address)).to.equal(0);
     })
-    it('should tell the right contract address',async()=>{
+    it('address of contract should not be empty',async()=>{
       expect (await Token.contractAddress()).to.not.be.null;
       // expect (await Token.contractAddress()).to.equal(0);//this will fail
     })
