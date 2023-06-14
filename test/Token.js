@@ -19,11 +19,17 @@ describe("Token contract", () => {
       const ownerBalance = await Token.balanceOf(owner.address);
       expect(await Token.total_Supply()).to.equal(ownerBalance);
     });
-    it('should transfer the right amount',async()=>{
-        await Token.connect(owner).transfer(addr1,1);
-        const afterbalance = await Token.balanceOf(owner);
-        expect(await balance).not.to.be.equal.to.await (afterbalance);
-    })
+    it("should transfer the right amount", async () => {
+      expect(await Token.total_Supply()).to.equal(10000);
+    });
+
+    it("should it tranferring the amount properly", async () => {
+      await Token.transfer(addr1.address, 500);
+      expect(await Token.balanceOf(addr1.address)).to.equal(500);
+
+      await Token.connect(addr1).transfer(addr2.address, 500);
+      expect(await Token.balanceOf(addr2.address)).to.equal(500);
+    });
 
     // it("Should assign the total supply of tokens to the owner", async () => {
     //   const ownerBalance = await Token.balanceOf(owner.address);
