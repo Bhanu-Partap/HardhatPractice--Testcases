@@ -32,7 +32,10 @@ describe("Token contract", () => {
     });
 
     it('should tell the right balance of the user',async()=>{
-      await Token.balanceOf()
+      expect( await Token.balanceOf(addr1.address)).to.equal(0);
+    })
+    it('should tell the right contract address',async()=>{
+      expect (await Token.contractAddress()).to.not.be.null;
     })
 
 

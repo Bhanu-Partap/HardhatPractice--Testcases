@@ -27,5 +27,9 @@ contract Token{
         return balances[msg.sender];
     }
 
+    function contractAddress() external view returns(address){
+        return address(this);
+    }
+
 }
 
