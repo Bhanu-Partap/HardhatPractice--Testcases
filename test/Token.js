@@ -36,6 +36,7 @@ describe("Token contract", () => {
     })
     it('should tell the right contract address',async()=>{
       expect (await Token.contractAddress()).to.not.be.null;
+      // expect (await Token.contractAddress()).to.equal(0);//this will fail
     })
 
 
