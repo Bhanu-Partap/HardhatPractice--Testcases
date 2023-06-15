@@ -44,5 +44,5 @@ describe("Token contract", () => {
       await expect(Token.connect(addr1).transfer(addr2.address,50)).to.revertedWith("Not enough Tokens");
       
     });
-  });
+  }); 
 });
