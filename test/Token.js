@@ -44,5 +44,15 @@ describe("Token contract", () => {
       await expect(Token.connect(addr1).transfer(addr2.address,50)).to.revertedWith("Not enough Tokens");
       
     });
+
+    it('added number is giving the right sum',async()=>{
+      const addnumber = await Token.addSum(5,6);
+      expect(addnumber).to.equal(11);   
+    })
+
+    it('added number is giving the right subtraction',async()=>{
+      const subtractnumber = await Token.subtractSum(6,5);
+      expect(subtractnumber).to.equal(1);   
+    })
   }); 
 });
