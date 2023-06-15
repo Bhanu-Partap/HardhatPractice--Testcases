@@ -40,36 +40,9 @@ describe("Token contract", () => {
     });
 
     it("Is user eligible for transfer(tokens available or not)", async () => {
-      await expect(Token.transfer()).to.be.revertedWith("Not enought tokens");
+      // console.log(await Token.connect(addr2.address).transfer(addr1.address,50));
+      await expect(Token.connect(addr1).transfer(addr2.address,50)).to.revertedWith("Not enough Tokens");
+      
     });
-
-    // it("Should assign the total supply of tokens to the owner", async () => {
-    //   const ownerBalance = await Token.balanceOf(owner.address);
-    //   expect(await Token.total_Supply()).to.equal(ownerBalance);
-    // });
   });
-
-  // descibe("Transcations", () => {
-  //   it("Should transfer tokens between accounts", async () => {
-  //     await token.transfer(addr1.address, 50);
-  //     const addr1Balance = await token.balanceOf(addr1.address);
-  //     expect(addr1Balance).to.equal(50);
-  //   });
-
-  //   it("Should fail if sender doesnt have enought tokens", async () => {
-  //     const initialOwnerBalanace = await token.balanceOf(owner.address);
-
-  //     await expect(
-  //       token.connect(addr1).transfer(owner.address, 1)
-  //     ).to.be.revertedWith("Not enough tokens");
-
-  //     expect(await token.balanceOf(owner.address)).to.equal(
-  //       initialOwnerBalanace
-  //     );
-  //   });
-  //   it('Should update the balance after transfers', async()=>{
-  //     const initialOwnerBalanace = await token.balanceOf(owner.address);
-
-  //   })
-  // });
 });
