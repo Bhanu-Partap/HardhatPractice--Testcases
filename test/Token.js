@@ -31,16 +31,17 @@ describe("Token contract", () => {
       expect(await Token.balanceOf(addr2.address)).to.equal(500);
     });
 
-    it('should tell the right balance of the user',async()=>{
-      expect( await Token.balanceOf(addr1.address)).to.equal(0);
-    })
-    it('address of contract should not be empty',async()=>{
-      expect (await Token.contractAddress()).to.not.be.null;
+    it("should tell the right balance of the user", async () => {
+      expect(await Token.balanceOf(addr1.address)).to.equal(0);
+    });
+    it("address of contract should not be empty", async () => {
+      expect(await Token.contractAddress()).to.not.be.null;
       // expect (await Token.contractAddress()).to.equal(0);//this will fail
-    })
+    });
 
-
-
+    it("Is user eligible for transfer(tokens available or not)", async () => {
+      await expect(Token.transfer()).to.be.revertedWith("Not enought tokens");
+    });
 
     // it("Should assign the total supply of tokens to the owner", async () => {
     //   const ownerBalance = await Token.balanceOf(owner.address);
