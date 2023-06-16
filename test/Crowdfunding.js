@@ -11,7 +11,6 @@ describe("Crowdfunding Contract", () => {
     it("should returning the right address", async () => {
       await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
       const a = await (Crowdfunding.userProjects(1))
-      console.log(a._owner);
     expect(await (a._owner)).to.equal(owner.address);
     });
 
@@ -29,7 +28,9 @@ describe("Crowdfunding Contract", () => {
     });
 
     it("should returning the right contribute amount",async()=>{
-      
+      await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
+      const contri = await Crowdfunding.contribute({value:ethers.utils.parseEther('3')})
+      expect(await contri).to.equal(userProjects(1).recievedAmount)
     })
   });
 });
