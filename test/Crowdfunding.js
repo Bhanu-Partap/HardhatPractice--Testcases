@@ -5,15 +5,31 @@ describe("Crowdfunding Contract", () => {
   beforeEach(async () => {
     crowdfunding = await ethers.getContractFactory("CrowdFunding");
     Crowdfunding = await crowdfunding.deploy();
-    await Crowdfunding.deployed();
     [owner, addr1, addr2] = await ethers.getSigners();
   });
   describe("Test case", () => {
-    it("should it returning the right address", async () => {
-      const a = await (Crowdfunding.userProjects(1)._owner)
-      console.log(a);
+    it("should returning the right address", async () => {
       await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
-    expect(await (Crowdfunding.userProjects(1)._owner)).to.equal(owner.address);
+      const a = await (Crowdfunding.userProjects(1))
+      console.log(a._owner);
+    expect(await (a._owner)).to.equal(owner.address);
     });
+
+    it("should returning the right name", async () => {
+      await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
+      const a = await (Crowdfunding.userProjects(1))
+    expect(await (a.name)).to.equal("bhanu");
+    });
+
+    it("should returning the right name", async () => {
+      await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
+      await Crowdfunding.setProjectDetails(2,"partap","faketory",100,200); 
+      const a = await (Crowdfunding.userProjects(2))
+    expect(await (a.name)).to.equal("partap");
+    });
+
+    it("should returning the right contribute amount",async()=>{
+      
+    })
   });
 });
