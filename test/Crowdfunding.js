@@ -29,8 +29,10 @@ describe("Crowdfunding Contract", () => {
 
     it("should returning the right contribute amount",async()=>{
       await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
-      const contri = await Crowdfunding.contribute(userProjects(1)._owner);
-      expect(await contri).not.to.be.null;
+      // const contri = await Crowdfunding.contribute(1);
+      // const contri2= await contri.userProjects(1)._owner;
+      // expect(await contri2).not.to.be.null;
+      await expect(Crowdfunding.connect(userProjects(1)._owner)).contribute(1,{value:4}).to.be.revertedWith("Amount can not be greater than goal amount");
     })
   });
 });
