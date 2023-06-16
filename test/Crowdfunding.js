@@ -29,8 +29,8 @@ describe("Crowdfunding Contract", () => {
 
     it("should returning the right contribute amount",async()=>{
       await Crowdfunding.setProjectDetails(1,"bhanu","hellloooo",50,20); 
-      const contri = await Crowdfunding.contribute(1);
-      expect(await userProject(1)._owner).not.to.be.null;
+      const contri = await Crowdfunding.contribute(userProjects(1)._owner);
+      expect(await contri).not.to.be.null;
     })
   });
 });
